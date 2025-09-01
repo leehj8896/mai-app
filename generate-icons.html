@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>아이콘 생성기</title>
+</head>
+<body>
+    <canvas id="canvas" width="512" height="512" style="border: 1px solid #ccc;"></canvas>
+    <br><br>
+    <button onclick="downloadIcon(192)">192x192 다운로드</button>
+    <button onclick="downloadIcon(512)">512x512 다운로드</button>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // 배경 그라디언트
+        const gradient = ctx.createLinearGradient(0, 0, 512, 512);
+        gradient.addColorStop(0, '#667eea');
+        gradient.addColorStop(1, '#764ba2');
+        
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 512, 512);
+
+        // 마이크 아이콘 그리기
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+        
+        // 마이크 바디
+        ctx.beginPath();
+        ctx.roundRect(216, 156, 80, 120, 40);
+        ctx.fill();
+        
+        // 마이크 스탠드
+        ctx.fillRect(253, 276, 6, 60);
+        
+        // 마이크 베이스
+        ctx.beginPath();
+        ctx.roundRect(226, 336, 60, 8, 4);
+        ctx.fill();
+        
+        // 소리 웨이브
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+        ctx.lineWidth = 8;
+        ctx.beginPath();
+        ctx.arc(256, 216, 80, -Math.PI/4, Math.PI/4, true);
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.arc(256, 216, 100, -Math.PI/4, Math.PI/4, true);
+        ctx.stroke();
+
+        function downloadIcon(size) {
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = size;
+            tempCanvas.height = size;
+            const tempCtx = tempCanvas.getContext('2d');
+            
+            tempCtx.drawImage(canvas, 0, 0, 512, 512, 0, 0, size, size);
+            
+            tempCanvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `icon-${size}x${size}.png`;
+                a.click();
+                URL.revokeObjectURL(url);
+            });
+        }
+    </script>
+</body>
+</html>

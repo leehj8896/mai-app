@@ -15,6 +15,22 @@ import {
   replaceWordInText,
 } from './utils/fuzzySearch'
 
+// PWA 관련 타입 정의
+interface BeforeInstallPromptEvent extends Event {
+  readonly platforms: string[];
+  readonly userChoice: Promise<{
+    outcome: 'accepted' | 'dismissed';
+    platform: string;
+  }>;
+  prompt(): Promise<void>;
+}
+
+declare global {
+  interface WindowEventMap {
+    beforeinstallprompt: BeforeInstallPromptEvent;
+  }
+}
+
 function App() {
   const [isListening, setIsListening] = useState(false)
   const [transcript, setTranscript] = useState('')
@@ -33,10 +49,22 @@ function App() {
   const [showSuggestions, setShowSuggestions] = useState(false)
   const [autoCorrectEnabled, setAutoCorrectEnabled] = useState(true)
   const [showInstallButton, setShowInstallButton] = useState(false)
+  const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null)
   const recognitionRef = useRef<SpeechRecognition | null>(null)
   
   // 최신 상태값에 접근하기 위한 ref들
   const autoCorrectEnabledRef = useRef(autoCorrectEnabled)
+  
+  // PWA 설치 핸들러
+  const handleInstallClick = async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      console.log(`User response to the install prompt: ${outcome}`);
+      setDeferredPrompt(null);
+      setShowInstallButton(false);
+    }
+  };
   
   // ref 값 업데이트
   useEffect(() => {
@@ -54,8 +82,9 @@ function App() {
       }
       
       // beforeinstallprompt 이벤트 리스너
-      const handleBeforeInstallPrompt = (e: any) => {
+      const handleBeforeInstallPrompt = (e: BeforeInstallPromptEvent) => {
         e.preventDefault();
+        setDeferredPrompt(e);
         setShowInstallButton(true);
       };
       
@@ -266,6 +295,7 @@ function App() {
             id="install-button"
             className="control-btn install-btn"
             title="앱으로 설치하기"
+            onClick={handleInstallClick}
           >
             📱 앱 설치
           </button>
