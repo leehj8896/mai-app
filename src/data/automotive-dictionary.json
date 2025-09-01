@@ -1,0 +1,582 @@
+{
+  "engine": {
+    "엔진": {
+      "english": "engine",
+      "category": "engine",
+      "description": "자동차의 동력을 생성하는 핵심 부품"
+    },
+    "실린더": {
+      "english": "cylinder",
+      "category": "engine",
+      "description": "피스톤이 움직이는 원통형 공간"
+    },
+    "피스톤": {
+      "english": "piston",
+      "category": "engine",
+      "description": "실린더 내에서 상하 운동하는 부품"
+    },
+    "크랭크샤프트": {
+      "english": "crankshaft",
+      "category": "engine",
+      "description": "피스톤의 직선 운동을 회전 운동으로 변환하는 축"
+    },
+    "캠샤프트": {
+      "english": "camshaft",
+      "category": "engine",
+      "description": "밸브의 개폐를 조절하는 축"
+    },
+    "밸브": {
+      "english": "valve",
+      "category": "engine",
+      "description": "연료와 공기의 유입, 배기가스 배출을 제어"
+    },
+    "흡기밸브": {
+      "english": "intake valve",
+      "category": "engine",
+      "description": "공기와 연료를 실린더로 유입시키는 밸브"
+    },
+    "배기밸브": {
+      "english": "exhaust valve",
+      "category": "engine",
+      "description": "연소가스를 실린더에서 배출하는 밸브"
+    },
+    "점화플러그": {
+      "english": "spark plug",
+      "category": "engine",
+      "description": "연료와 공기 혼합기에 점화하는 부품"
+    },
+    "연료분사장치": {
+      "english": "fuel injector",
+      "category": "engine",
+      "description": "연료를 실린더에 분사하는 장치"
+    },
+    "터보차저": {
+      "english": "turbocharger",
+      "category": "engine",
+      "description": "배기가스로 터빈을 돌려 흡입공기를 압축하는 장치"
+    },
+    "슈퍼차저": {
+      "english": "supercharger",
+      "category": "engine",
+      "description": "엔진 동력으로 흡입공기를 압축하는 장치"
+    }
+  },
+  "transmission": {
+    "변속기": {
+      "english": "transmission",
+      "category": "transmission",
+      "description": "엔진의 회전력을 바퀴로 전달하는 장치"
+    },
+    "수동변속기": {
+      "english": "manual transmission",
+      "category": "transmission",
+      "description": "운전자가 직접 기어를 조작하는 변속기"
+    },
+    "자동변속기": {
+      "english": "automatic transmission",
+      "category": "transmission",
+      "description": "자동으로 기어가 변환되는 변속기"
+    },
+    "클러치": {
+      "english": "clutch",
+      "category": "transmission",
+      "description": "엔진과 변속기를 연결하거나 분리하는 장치"
+    },
+    "토크컨버터": {
+      "english": "torque converter",
+      "category": "transmission",
+      "description": "자동변속기에서 동력을 전달하는 장치"
+    },
+    "기어박스": {
+      "english": "gearbox",
+      "category": "transmission",
+      "description": "기어비를 변환하는 장치"
+    },
+    "CVT": {
+      "english": "continuously variable transmission",
+      "category": "transmission",
+      "description": "무단변속기, 연속적으로 기어비를 변환"
+    }
+  },
+  "brakes": {
+    "브레이크": {
+      "english": "brake",
+      "category": "brakes",
+      "description": "차량의 속도를 줄이거나 정지시키는 장치"
+    },
+    "브레이크패드": {
+      "english": "brake pad",
+      "category": "brakes",
+      "description": "디스크 브레이크에서 마찰재 역할을 하는 부품"
+    },
+    "브레이크디스크": {
+      "english": "brake disc",
+      "category": "brakes",
+      "description": "회전하는 원판으로 브레이크패드가 눌러지는 부분"
+    },
+    "브레이크슈": {
+      "english": "brake shoe",
+      "category": "brakes",
+      "description": "드럼 브레이크에서 마찰재 역할을 하는 부품"
+    },
+    "브레이크드럼": {
+      "english": "brake drum",
+      "category": "brakes",
+      "description": "드럼 브레이크의 원통형 마찰면"
+    },
+    "브레이크액": {
+      "english": "brake fluid",
+      "category": "brakes",
+      "description": "브레이크 시스템의 유압 전달 매체"
+    },
+    "ABS": {
+      "english": "anti-lock braking system",
+      "category": "brakes",
+      "description": "급제동시 바퀴 잠김을 방지하는 시스템"
+    },
+    "핸드브레이크": {
+      "english": "handbrake",
+      "category": "brakes",
+      "description": "주차 시 사용하는 보조 브레이크"
+    }
+  },
+  "suspension": {
+    "서스펜션": {
+      "english": "suspension",
+      "category": "suspension",
+      "description": "노면의 충격을 흡수하여 승차감을 향상시키는 장치"
+    },
+    "쇼크업소버": {
+      "english": "shock absorber",
+      "category": "suspension",
+      "description": "진동과 충격을 흡수하는 감쇠기"
+    },
+    "스프링": {
+      "english": "spring",
+      "category": "suspension",
+      "description": "하중을 지지하고 충격을 완화하는 탄성체"
+    },
+    "스트럿": {
+      "english": "strut",
+      "category": "suspension",
+      "description": "맥퍼슨 방식의 서스펜션 구조"
+    },
+    "스태빌라이저바": {
+      "english": "stabilizer bar",
+      "category": "suspension",
+      "description": "차체의 롤링을 억제하는 막대"
+    },
+    "컨트롤암": {
+      "english": "control arm",
+      "category": "suspension",
+      "description": "바퀴의 상하 운동을 제어하는 아암"
+    }
+  },
+  "wheels_tires": {
+    "타이어": {
+      "english": "tire",
+      "category": "wheels_tires",
+      "description": "차량과 노면을 접촉시키는 고무 부품"
+    },
+    "휠": {
+      "english": "wheel",
+      "category": "wheels_tires",
+      "description": "타이어가 장착되는 금속 림"
+    },
+    "림": {
+      "english": "rim",
+      "category": "wheels_tires",
+      "description": "바퀴의 외곽 금속 테두리"
+    },
+    "휠베어링": {
+      "english": "wheel bearing",
+      "category": "wheels_tires",
+      "description": "바퀴의 회전을 부드럽게 하는 베어링"
+    },
+    "타이어압력": {
+      "english": "tire pressure",
+      "category": "wheels_tires",
+      "description": "타이어 내부의 공기압"
+    },
+    "휠얼라인먼트": {
+      "english": "wheel alignment",
+      "category": "wheels_tires",
+      "description": "바퀴의 정렬 상태 조정"
+    }
+  },
+  "electrical": {
+    "배터리": {
+      "english": "battery",
+      "category": "electrical",
+      "description": "전기를 저장하고 공급하는 장치"
+    },
+    "알터네이터": {
+      "english": "alternator",
+      "category": "electrical",
+      "description": "엔진 회전력으로 전기를 생성하는 발전기"
+    },
+    "스타터": {
+      "english": "starter",
+      "category": "electrical",
+      "description": "엔진 시동을 거는 전동기"
+    },
+    "헤드라이트": {
+      "english": "headlight",
+      "category": "electrical",
+      "description": "전방을 비추는 전조등"
+    },
+    "테일라이트": {
+      "english": "taillight",
+      "category": "electrical",
+      "description": "후방을 표시하는 미등"
+    },
+    "방향지시등": {
+      "english": "turn signal",
+      "category": "electrical",
+      "description": "차량의 진행 방향을 알리는 등"
+    },
+    "퓨즈": {
+      "english": "fuse",
+      "category": "electrical",
+      "description": "과전류로부터 회로를 보호하는 장치"
+    },
+    "점화코일": {
+      "english": "ignition coil",
+      "category": "electrical",
+      "description": "점화플러그에 고전압을 공급하는 코일"
+    }
+  },
+  "cooling": {
+    "라디에이터": {
+      "english": "radiator",
+      "category": "cooling",
+      "description": "엔진 냉각수를 냉각시키는 열교환기"
+    },
+    "냉각수": {
+      "english": "coolant",
+      "category": "cooling",
+      "description": "엔진의 열을 흡수하는 액체"
+    },
+    "워터펌프": {
+      "english": "water pump",
+      "category": "cooling",
+      "description": "냉각수를 순환시키는 펌프"
+    },
+    "서모스탯": {
+      "english": "thermostat",
+      "category": "cooling",
+      "description": "냉각수 온도에 따라 순환을 제어하는 밸브"
+    },
+    "냉각팬": {
+      "english": "cooling fan",
+      "category": "cooling",
+      "description": "라디에이터를 통과하는 공기 흐름을 돕는 팬"
+    },
+    "오버히트": {
+      "english": "overheat",
+      "category": "cooling",
+      "description": "엔진이 과도하게 가열된 상태"
+    }
+  },
+  "lubrication": {
+    "엔진오일": {
+      "english": "engine oil",
+      "category": "lubrication",
+      "description": "엔진 내부 부품들의 마찰을 줄이는 윤활유"
+    },
+    "오일필터": {
+      "english": "oil filter",
+      "category": "lubrication",
+      "description": "엔진오일의 불순물을 제거하는 필터"
+    },
+    "오일팬": {
+      "english": "oil pan",
+      "category": "lubrication",
+      "description": "엔진 하부의 오일 저장 용기"
+    },
+    "오일펌프": {
+      "english": "oil pump",
+      "category": "lubrication",
+      "description": "엔진오일을 순환시키는 펌프"
+    },
+    "점성도": {
+      "english": "viscosity",
+      "category": "lubrication",
+      "description": "오일의 끈적임 정도를 나타내는 수치"
+    }
+  },
+  "fuel_system": {
+    "연료탱크": {
+      "english": "fuel tank",
+      "category": "fuel_system",
+      "description": "연료를 저장하는 탱크"
+    },
+    "연료펌프": {
+      "english": "fuel pump",
+      "category": "fuel_system",
+      "description": "연료탱크에서 엔진으로 연료를 공급하는 펌프"
+    },
+    "연료필터": {
+      "english": "fuel filter",
+      "category": "fuel_system",
+      "description": "연료의 불순물을 제거하는 필터"
+    },
+    "연료라인": {
+      "english": "fuel line",
+      "category": "fuel_system",
+      "description": "연료가 흐르는 배관"
+    },
+    "카뷰레터": {
+      "english": "carburetor",
+      "category": "fuel_system",
+      "description": "공기와 연료를 혼합하는 장치 (구형차)"
+    },
+    "연료분사시스템": {
+      "english": "fuel injection system",
+      "category": "fuel_system",
+      "description": "전자제어로 연료를 분사하는 시스템"
+    }
+  },
+  "exhaust": {
+    "배기파이프": {
+      "english": "exhaust pipe",
+      "category": "exhaust",
+      "description": "배기가스를 배출하는 파이프"
+    },
+    "머플러": {
+      "english": "muffler",
+      "category": "exhaust",
+      "description": "배기음을 줄이는 소음기"
+    },
+    "촉매변환기": {
+      "english": "catalytic converter",
+      "category": "exhaust",
+      "description": "배기가스의 유해물질을 정화하는 장치"
+    },
+    "배기매니폴드": {
+      "english": "exhaust manifold",
+      "category": "exhaust",
+      "description": "각 실린더의 배기가스를 모으는 집합관"
+    },
+    "DPF": {
+      "english": "diesel particulate filter",
+      "category": "exhaust",
+      "description": "디젤 매연을 제거하는 필터"
+    }
+  },
+  "body": {
+    "범퍼": {
+      "english": "bumper",
+      "category": "body",
+      "description": "충돌 시 충격을 흡수하는 차체 부품"
+    },
+    "보닛": {
+      "english": "hood",
+      "category": "body",
+      "description": "엔진룸을 덮는 앞쪽 덮개"
+    },
+    "트렁크": {
+      "english": "trunk",
+      "category": "body",
+      "description": "짐을 넣는 뒷쪽 공간"
+    },
+    "도어": {
+      "english": "door",
+      "category": "body",
+      "description": "승객이 타고 내리는 문"
+    },
+    "윈드실드": {
+      "english": "windshield",
+      "category": "body",
+      "description": "앞유리창"
+    },
+    "사이드미러": {
+      "english": "side mirror",
+      "category": "body",
+      "description": "측면과 후방을 확인하는 거울"
+    },
+    "루프": {
+      "english": "roof",
+      "category": "body",
+      "description": "차량의 지붕"
+    }
+  },
+  "interior": {
+    "대시보드": {
+      "english": "dashboard",
+      "category": "interior",
+      "description": "운전석 앞의 계기판이 있는 부분"
+    },
+    "스티어링휠": {
+      "english": "steering wheel",
+      "category": "interior",
+      "description": "차량의 방향을 조절하는 핸들"
+    },
+    "시트": {
+      "english": "seat",
+      "category": "interior",
+      "description": "승객이 앉는 좌석"
+    },
+    "안전벨트": {
+      "english": "seatbelt",
+      "category": "interior",
+      "description": "승객을 보호하는 안전띠"
+    },
+    "에어백": {
+      "english": "airbag",
+      "category": "interior",
+      "description": "충돌 시 팽창하여 승객을 보호하는 장치"
+    },
+    "계기판": {
+      "english": "instrument cluster",
+      "category": "interior",
+      "description": "속도계, 연료계 등이 모인 패널"
+    }
+  },
+  "maintenance": {
+    "정기점검": {
+      "english": "regular inspection",
+      "category": "maintenance",
+      "description": "주기적으로 실시하는 차량 점검"
+    },
+    "오일교환": {
+      "english": "oil change",
+      "category": "maintenance",
+      "description": "엔진오일을 새것으로 바꾸는 작업"
+    },
+    "타이어교체": {
+      "english": "tire replacement",
+      "category": "maintenance",
+      "description": "마모된 타이어를 새것으로 바꾸는 작업"
+    },
+    "브레이크패드교체": {
+      "english": "brake pad replacement",
+      "category": "maintenance",
+      "description": "마모된 브레이크패드를 교체하는 작업"
+    },
+    "필터교체": {
+      "english": "filter replacement",
+      "category": "maintenance",
+      "description": "각종 필터를 새것으로 교체하는 작업"
+    },
+    "배터리교체": {
+      "english": "battery replacement",
+      "category": "maintenance",
+      "description": "방전되거나 수명이 다한 배터리 교체"
+    },
+    "진단": {
+      "english": "diagnosis",
+      "category": "maintenance",
+      "description": "차량의 문제점을 찾아내는 과정"
+    },
+    "튜닝": {
+      "english": "tuning",
+      "category": "maintenance",
+      "description": "차량 성능을 개선하는 작업"
+    },
+    "세차": {
+      "english": "car wash",
+      "category": "maintenance",
+      "description": "차량을 청소하는 작업"
+    },
+    "왁싱": {
+      "english": "waxing",
+      "category": "maintenance",
+      "description": "차량 도장면에 보호막을 형성하는 작업"
+    }
+  },
+  "problems": {
+    "엔진실화": {
+      "english": "engine misfire",
+      "category": "problems",
+      "description": "엔진이 불규칙하게 작동하는 현상"
+    },
+    "오버히팅": {
+      "english": "overheating",
+      "category": "problems",
+      "description": "엔진이 과열되는 문제"
+    },
+    "시동불량": {
+      "english": "starting problem",
+      "category": "problems",
+      "description": "엔진 시동이 잘 걸리지 않는 문제"
+    },
+    "누유": {
+      "english": "oil leak",
+      "category": "problems",
+      "description": "오일이 새어나가는 문제"
+    },
+    "누수": {
+      "english": "water leak",
+      "category": "problems",
+      "description": "냉각수가 새어나가는 문제"
+    },
+    "배터리방전": {
+      "english": "battery drain",
+      "category": "problems",
+      "description": "배터리가 방전되는 문제"
+    },
+    "브레이크패드마모": {
+      "english": "brake pad wear",
+      "category": "problems",
+      "description": "브레이크패드가 마모된 상태"
+    },
+    "타이어펑크": {
+      "english": "tire puncture",
+      "category": "problems",
+      "description": "타이어에 구멍이 나는 문제"
+    },
+    "변속불량": {
+      "english": "transmission problem",
+      "category": "problems",
+      "description": "변속기에 문제가 있는 상태"
+    },
+    "진동": {
+      "english": "vibration",
+      "category": "problems",
+      "description": "차량에서 비정상적인 진동이 발생하는 현상"
+    }
+  },
+  "tools": {
+    "렌치": {
+      "english": "wrench",
+      "category": "tools",
+      "description": "볼트와 너트를 조이거나 푸는 도구"
+    },
+    "드라이버": {
+      "english": "screwdriver",
+      "category": "tools",
+      "description": "나사를 조이거나 푸는 도구"
+    },
+    "잭": {
+      "english": "jack",
+      "category": "tools",
+      "description": "차량을 들어올리는 도구"
+    },
+    "토크렌치": {
+      "english": "torque wrench",
+      "category": "tools",
+      "description": "정확한 토크로 볼트를 조이는 도구"
+    },
+    "멀티미터": {
+      "english": "multimeter",
+      "category": "tools",
+      "description": "전압, 전류, 저항을 측정하는 계측기"
+    },
+    "진단기": {
+      "english": "diagnostic scanner",
+      "category": "tools",
+      "description": "차량의 오류 코드를 읽는 장비"
+    },
+    "리프트": {
+      "english": "lift",
+      "category": "tools",
+      "description": "차량을 높이 들어올리는 장비"
+    },
+    "압축기": {
+      "english": "compressor",
+      "category": "tools",
+      "description": "압축공기를 만드는 장비"
+    }
+  }
+}

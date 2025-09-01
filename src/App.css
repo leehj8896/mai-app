@@ -1,0 +1,546 @@
+#root {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.control-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  min-width: 140px;
+}
+
+.control-btn:hover:not(.disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.control-btn:active:not(.disabled) {
+  transform: translateY(0);
+}
+
+.control-btn.disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.start-btn:not(.disabled) {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+}
+
+.stop-btn:not(.disabled) {
+  background: linear-gradient(135deg, #f44336 0%, #da190b 100%);
+}
+
+.clear-btn {
+  background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+}
+
+.copy-btn {
+  background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+}
+
+.dictionary-btn {
+  background: linear-gradient(135deg, #9C27B0 0%, #7B1FA2 100%);
+}
+
+.suggestions-btn {
+  background: linear-gradient(135deg, #FF5722 0%, #D84315 100%);
+}
+
+.suggestions-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.settings {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.auto-correct-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: #555;
+  cursor: pointer;
+}
+
+.auto-correct-toggle input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.status {
+  margin: 2rem 0;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.listening-indicator {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #4CAF50;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.pulse {
+  width: 20px;
+  height: 20px;
+  background: #4CAF50;
+  border-radius: 50%;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+  }
+  
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+  }
+  
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+  }
+}
+
+.transcript-container {
+  margin: 2rem 0;
+}
+
+.transcript-container h3 {
+  text-align: left;
+  color: #333;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.transcript-box {
+  background: #f9f9f9;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  min-height: 200px;
+  text-align: left;
+  line-height: 1.6;
+  font-size: 1.1rem;
+  position: relative;
+}
+
+.final-transcript {
+  color: #333;
+  font-weight: 500;
+}
+
+.final-transcript mark {
+  background: linear-gradient(135deg, #FFE082 0%, #FFD54F 100%);
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-weight: 600;
+  color: #E65100;
+}
+
+.interim-transcript {
+  color: #666;
+  font-style: italic;
+  background: rgba(102, 126, 234, 0.1);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.placeholder {
+  color: #999;
+  font-style: italic;
+  display: block;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.info {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+  border-radius: 12px;
+  border-left: 4px solid #2196F3;
+}
+
+.info p {
+  margin: 0.5rem 0;
+  color: #555;
+  text-align: left;
+}
+
+.error-message {
+  background: #ffebee;
+  border: 2px solid #ffcdd2;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+  color: #c62828;
+}
+
+.error-message p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+/* 자동차 용어 관련 스타일 */
+.found-terms {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: #f0f8ff;
+  border: 2px solid #2196F3;
+  border-radius: 8px;
+}
+
+.found-terms h4 {
+  margin: 0 0 1rem 0;
+  color: #1976D2;
+  font-size: 1.1rem;
+}
+
+.terms-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.term-item {
+  padding: 0.8rem;
+  background: white;
+  border-radius: 6px;
+  border-left: 4px solid #2196F3;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.term-korean {
+  font-weight: 600;
+  color: #1976D2;
+  margin-right: 0.5rem;
+}
+
+.term-english {
+  color: #666;
+  font-style: italic;
+  margin-right: 0.5rem;
+}
+
+.term-description {
+  display: block;
+  margin-top: 0.3rem;
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* 용어집 컨테이너 */
+.dictionary-container {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #fafafa;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.dictionary-container h3 {
+  margin: 0 0 1rem 0;
+  color: #333;
+  text-align: center;
+}
+
+.category-selector {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.category-select {
+  padding: 0.5rem 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  background: white;
+  font-size: 1rem;
+  min-width: 200px;
+}
+
+.category-select:focus {
+  outline: none;
+  border-color: #2196F3;
+}
+
+.dictionary-content {
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.category-section {
+  margin-bottom: 2rem;
+}
+
+.category-section h4 {
+  color: #1976D2;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e3f2fd;
+  font-size: 1.2rem;
+}
+
+.terms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.dictionary-term {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  transition: box-shadow 0.2s ease;
+}
+
+.dictionary-term:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.term-header {
+  margin-bottom: 0.5rem;
+}
+
+.dictionary-term .term-korean {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1976D2;
+}
+
+.dictionary-term .term-english {
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+}
+
+.dictionary-term .term-description {
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-top: 0.5rem;
+}
+
+/* 교정 제안 스타일 */
+.suggestions-container {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #fff3e0;
+  border: 2px solid #FF9800;
+  border-radius: 12px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.suggestions-container h3 {
+  margin: 0 0 1rem 0;
+  color: #E65100;
+  text-align: center;
+}
+
+.suggestions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.suggestion-item {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #FFB74D;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.suggestion-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.original-word {
+  background: #ffcdd2;
+  color: #c62828;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.arrow {
+  color: #FF9800;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.suggested-word {
+  background: #c8e6c9;
+  color: #2e7d32;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.confidence {
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.suggestion-description {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.suggestion-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.apply-btn {
+  background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);
+  border: none;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.apply-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.apply-once {
+  background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+}
+
+.apply-all {
+  background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);
+}
+
+.dismiss-btn {
+  background: linear-gradient(135deg, #9E9E9E 0%, #757575 100%);
+  border: none;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.dismiss-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 1rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .controls {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .control-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .transcript-box {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  
+  .terms-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .dictionary-container {
+    padding: 1rem;
+    max-height: 400px;
+  }
+  
+  .found-terms {
+    padding: 0.8rem;
+  }
+  
+  .suggestions-container {
+    padding: 1rem;
+    max-height: 300px;
+  }
+  
+  .suggestion-actions {
+    flex-direction: column;
+  }
+  
+  .apply-btn, .dismiss-btn {
+    width: 100%;
+  }
+}
