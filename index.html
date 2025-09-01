@@ -2,11 +2,153 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MRO AI Agent</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>음성 인식 받아쓰기 - 자동차 정비</title>
+    <meta name="description" content="자동차 정비 전용 음성 인식 받아쓰기 애플리케이션. Web Speech API와 AI를 활용한 스마트 받아쓰기 도구입니다." />
+    <meta name="keywords" content="음성인식, 받아쓰기, 자동차, 정비, 부품, 음성변환, PWA" />
+    <meta name="author" content="leehj8896" />
+    
+    <!-- PWA 관련 메타태그 -->
+    <meta name="theme-color" content="#667eea" />
+    <meta name="background-color" content="#ffffff" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="자동차 받아쓰기" />
+    <meta name="msapplication-TileColor" content="#667eea" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    
+    <!-- 매니페스트 링크 -->
+    <link rel="manifest" href="/mai-app/manifest.json" />
+    
+    <!-- 파비콘 및 아이콘 -->
+    <link rel="icon" type="image/svg+xml" href="/mai-app/icons/icon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/mai-app/icons/icon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/mai-app/icons/icon-16x16.png" />
+    
+    <!-- Apple Touch 아이콘 -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/mai-app/icons/icon-192x192.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/mai-app/icons/icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/mai-app/icons/icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/mai-app/icons/icon-128x128.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/mai-app/icons/icon-128x128.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/mai-app/icons/icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/mai-app/icons/icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="/mai-app/icons/icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/mai-app/icons/icon-72x72.png" />
+    
+    <!-- Microsoft 타일 -->
+    <meta name="msapplication-TileImage" content="/mai-app/icons/icon-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="/mai-app/icons/icon-72x72.png" />
+    <meta name="msapplication-square150x150logo" content="/mai-app/icons/icon-144x144.png" />
+    <meta name="msapplication-wide310x150logo" content="/mai-app/icons/icon-384x384.png" />
+    <meta name="msapplication-square310x310logo" content="/mai-app/icons/icon-384x384.png" />
+    
+    <!-- Open Graph (소셜 미디어 공유) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="음성 인식 받아쓰기 - 자동차 정비" />
+    <meta property="og:description" content="자동차 정비 전용 음성 인식 받아쓰기 애플리케이션" />
+    <meta property="og:url" content="https://leehj8896.github.io/mai-app/" />
+    <meta property="og:image" content="https://leehj8896.github.io/mai-app/icons/icon-512x512.png" />
+    <meta property="og:site_name" content="자동차 받아쓰기" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="음성 인식 받아쓰기 - 자동차 정비" />
+    <meta name="twitter:description" content="자동차 정비 전용 음성 인식 받아쓰기 애플리케이션" />
+    <meta name="twitter:image" content="https://leehj8896.github.io/mai-app/icons/icon-512x512.png" />
+    
+    <!-- 보안 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:; media-src 'self' blob:;" />
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- PWA 설치 프롬프트 및 서비스 워커 등록 -->
+    <script>
+      // 서비스 워커 등록
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/mai-app/sw.js')
+            .then((registration) => {
+              console.log('SW registered: ', registration);
+            })
+            .catch((registrationError) => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+      
+      // PWA 설치 프롬프트
+      let deferredPrompt;
+      
+      window.addEventListener('beforeinstallprompt', (e) => {
+        console.log('PWA install prompt triggered');
+        e.preventDefault();
+        deferredPrompt = e;
+        
+        // 사용자에게 설치 옵션을 보여주는 커스텀 UI 표시
+        showInstallPromotion();
+      });
+      
+      function showInstallPromotion() {
+        // 앱에서 설치 버튼을 보여주는 로직
+        const installButton = document.getElementById('install-button');
+        if (installButton) {
+          installButton.style.display = 'block';
+          installButton.addEventListener('click', installApp);
+        }
+      }
+      
+      function installApp() {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+              console.log('User accepted the PWA install prompt');
+            } else {
+              console.log('User dismissed the PWA install prompt');
+            }
+            deferredPrompt = null;
+          });
+        }
+      }
+      
+      // 앱 설치 완료 후 이벤트
+      window.addEventListener('appinstalled', (evt) => {
+        console.log('PWA was installed');
+        // 설치 버튼 숨기기
+        const installButton = document.getElementById('install-button');
+        if (installButton) {
+          installButton.style.display = 'none';
+        }
+      });
+      
+      // URL 파라미터 기반 자동 실행
+      window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const action = urlParams.get('action');
+        
+        if (action === 'start-recording') {
+          // 음성 인식 자동 시작 (앱 로드 후)
+          setTimeout(() => {
+            const startButton = document.querySelector('.start-btn');
+            if (startButton && !startButton.disabled) {
+              startButton.click();
+            }
+          }, 1000);
+        } else if (action === 'dictionary') {
+          // 용어집 자동 열기
+          setTimeout(() => {
+            const dictButton = document.querySelector('.dictionary-btn');
+            if (dictButton) {
+              dictButton.click();
+            }
+          }, 1000);
+        }
+      });
+    </script>
   </body>
 </html>

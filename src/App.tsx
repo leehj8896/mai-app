@@ -32,6 +32,7 @@ function App() {
   }>>([])
   const [showSuggestions, setShowSuggestions] = useState(false)
   const [autoCorrectEnabled, setAutoCorrectEnabled] = useState(true)
+  const [showInstallButton, setShowInstallButton] = useState(false)
   const recognitionRef = useRef<SpeechRecognition | null>(null)
   
   // 최신 상태값에 접근하기 위한 ref들
@@ -41,6 +42,39 @@ function App() {
   useEffect(() => {
     autoCorrectEnabledRef.current = autoCorrectEnabled
   }, [autoCorrectEnabled])
+
+  // PWA 설치 관련 useEffect
+  useEffect(() => {
+    // PWA 설치 가능 여부 체크
+    const checkPWAInstallability = () => {
+      // 이미 설치된 앱인지 확인
+      if (window.matchMedia('(display-mode: standalone)').matches) {
+        setShowInstallButton(false);
+        return;
+      }
+      
+      // beforeinstallprompt 이벤트 리스너
+      const handleBeforeInstallPrompt = (e: any) => {
+        e.preventDefault();
+        setShowInstallButton(true);
+      };
+      
+      // appinstalled 이벤트 리스너
+      const handleAppInstalled = () => {
+        setShowInstallButton(false);
+      };
+      
+      window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.addEventListener('appinstalled', handleAppInstalled);
+      
+      return () => {
+        window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+        window.removeEventListener('appinstalled', handleAppInstalled);
+      };
+    };
+    
+    checkPWAInstallability();
+  }, []);
 
   useEffect(() => {
     // Web Speech API 지원 여부 확인
@@ -226,6 +260,16 @@ function App() {
         >
           🔍 교정 제안 ({potentialReplacements.length})
         </button>
+        
+        {showInstallButton && (
+          <button 
+            id="install-button"
+            className="control-btn install-btn"
+            title="앱으로 설치하기"
+          >
+            📱 앱 설치
+          </button>
+        )}
       </div>
 
       <div className="settings">

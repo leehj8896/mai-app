@@ -1,0 +1,103 @@
+{
+  "name": "음성 인식 받아쓰기 - 자동차 정비",
+  "short_name": "자동차 받아쓰기",
+  "description": "자동차 정비 전용 음성 인식 받아쓰기 애플리케이션",
+  "start_url": "/mai-app/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#667eea",
+  "orientation": "portrait-primary",
+  "scope": "/mai-app/",
+  "lang": "ko",
+  "categories": ["productivity", "utilities", "automotive"],
+  "icons": [
+    {
+      "src": "/mai-app/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/mai-app/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/mai-app/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/mai-app/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/mai-app/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/mai-app/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/mai-app/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/mai-app/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/mai-app/screenshots/desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/mai-app/screenshots/mobile.png",
+      "sizes": "375x812",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "음성 인식 시작",
+      "short_name": "녹음 시작",
+      "description": "바로 음성 인식을 시작합니다",
+      "url": "/mai-app/?action=start-recording",
+      "icons": [
+        {
+          "src": "/mai-app/icons/icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "자동차 용어집",
+      "short_name": "용어집",
+      "description": "자동차 용어집을 확인합니다",
+      "url": "/mai-app/?action=dictionary",
+      "icons": [
+        {
+          "src": "/mai-app/icons/icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}
