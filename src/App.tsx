@@ -13,7 +13,6 @@ import {
   findPotentialReplacements,
   autoReplaceText,
   replaceWordInText,
-  getSimilarTermsSuggestions
 } from './utils/fuzzySearch'
 
 function App() {
