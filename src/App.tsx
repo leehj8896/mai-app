@@ -11,7 +11,6 @@ import {
 } from './utils/automotiveDictionary'
 import {
   findPotentialReplacements,
-  autoReplaceText,
   replaceWordInText,
 } from './utils/fuzzySearch'
 
@@ -47,13 +46,9 @@ function App() {
     data: AutomotiveTerm;
   }>>([])
   const [showSuggestions, setShowSuggestions] = useState(false)
-  const [autoCorrectEnabled, setAutoCorrectEnabled] = useState(true)
   const [showInstallButton, setShowInstallButton] = useState(false)
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null)
   const recognitionRef = useRef<SpeechRecognition | null>(null)
-  
-  // 최신 상태값에 접근하기 위한 ref들
-  const autoCorrectEnabledRef = useRef(autoCorrectEnabled)
   
   // PWA 설치 핸들러
   const handleInstallClick = async () => {
@@ -65,11 +60,6 @@ function App() {
       setShowInstallButton(false);
     }
   };
-  
-  // ref 값 업데이트
-  useEffect(() => {
-    autoCorrectEnabledRef.current = autoCorrectEnabled
-  }, [autoCorrectEnabled])
 
   // PWA 설치 관련 useEffect
   useEffect(() => {
@@ -143,22 +133,11 @@ function App() {
         
         if (finalText) {
           setFinalTranscript(prev => {
-            let newText = prev + finalText + ' ';
+            const newText = prev + finalText + ' ';
             
-            // 자동 교정이 활성화된 경우
-            if (autoCorrectEnabledRef.current) {
-              const correctionResult = autoReplaceText(newText, 0.4);
-              newText = correctionResult.newText;
-              
-              // 교정된 내용이 있다면 알림
-              if (correctionResult.replacements.length > 0) {
-                console.log('자동 교정된 단어들:', correctionResult.replacements);
-              }
-            } else {
-              // 수동 교정을 위한 제안 찾기
-              const suggestions = findPotentialReplacements(newText);
-              setPotentialReplacements(suggestions);
-            }
+            // 수동 교정을 위한 제안 찾기
+            const suggestions = findPotentialReplacements(newText);
+            setPotentialReplacements(suggestions);
             
             // 자동차 관련 용어 찾기
             const terms = findAutomotiveTermsInText(newText);
@@ -300,17 +279,6 @@ function App() {
             📱 앱 설치
           </button>
         )}
-      </div>
-
-      <div className="settings">
-        <label className="auto-correct-toggle">
-          <input
-            type="checkbox"
-            checked={autoCorrectEnabled}
-            onChange={(e) => setAutoCorrectEnabled(e.target.checked)}
-          />
-          <span>자동 교정 활성화</span>
-        </label>
       </div>
 
       <div className="status">
